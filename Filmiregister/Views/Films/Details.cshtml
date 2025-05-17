@@ -1,0 +1,21 @@
+﻿@model Filmiregister.Models.Films.FilmDeleteViewModel  
+<div style="font-size: 1.5rem;">  
+   <h1 style="text-align: center;">@Html.DisplayFor(model => model.FilmTitle)</h1>  
+   <div>  
+       <h4 style="text-align: center;">Details</h4>  
+       <hr />  
+       <p>  
+           <div>  
+               <dl class="row">  
+                   <div class="form-group row">  
+                       Category: @Html.DisplayFor(model => model.FilmCategory)<br />  
+                       Duration: @Html.DisplayFor(model => model.FilmDuration)<br />  
+                       Description: @Html.DisplayFor(model => model.FilmDescription)<br />  
+                       PublicationDatev: @Html.DisplayFor(model => model.PublicationDate)  
+                   </div>  
+               </dl>  
+                <a asp-action="Index" asp-controller="films" class="btn btn-secondary">Back</a>
+           </div>  
+       </p>  
+   </div>  
+</div>  

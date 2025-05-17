@@ -1,4 +1,5 @@
-﻿using Filmiregister.Models;
+﻿using Filmiregister.Domain;
+using Filmiregister.Models;
 
 namespace Filmiregister.Data
 {
@@ -14,14 +15,13 @@ namespace Filmiregister.Data
             {
                 new Film
                 {
-                    FilmID = 1,
+                    FilmID = Guid.NewGuid(),
                     FilmTitle = "TestFilm",
                     FilmCategory = new List<string> { "Action", "Drama" },
                     FilmDescription = "TestFilmDescription",
-                    FilmImage = "No image",
                     FilmRating = 4.5,
                     PublicationDate = new DateOnly(2023, 10, 1),
-                    FilmDuration = new TimeOnly(2, 30)
+                    FilmDuration = "2.30h"
                 }
             };
         }

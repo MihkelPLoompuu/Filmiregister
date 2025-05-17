@@ -1,8 +1,43 @@
-﻿@{
+﻿@model IEnumerable<Filmiregister.Models.Films.FilmIndexViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@{
+    int rowNumber = 1;
+    int currentRow = 1;
+    int currentTile = 1;
+    int tilesInRow = 6;
+}
+<div class="h1, align-text-top">Movies:</div>
+<form method="post">
+    <table class="table table-hover" id="tableWH">
+        <tbody>
+            @foreach (var movie in Model)
+            {
+            <td>
+                <table class="HIT">
+                    <tr><td colspan="2">@movie.FilmTitle</td></tr>
+                    <tr>
+                        <td colspan="2">
+                                @if (movie.FilmImage == null || !movie.FilmImage.Any())
+                                {
+                                <img src="~/lib/appset/image/Q.jpg" alt="Default Image" class="card-img-top" />
+                                }
+                                else
+                                {
+                                    @foreach (var Image in movie.FilmImage)
+                                    {
+                                    <partial name="_ImageIndex" model="Image" />
+                                    }
+                                }
+                        </td>
+                    </tr>
+                    <tr><td>@movie.PublicationDate</td></tr>
+                    <tr><td colspan="2">@movie.FilmDuration</td></tr>
+                </table>
+            </td>
+                rowNumber++;
+            }
+        </tbody>
+    </table>
+</form>

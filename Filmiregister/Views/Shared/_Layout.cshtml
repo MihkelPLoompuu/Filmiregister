@@ -25,6 +25,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Films" asp-action="Index">Add Movie</a>
+                        </li>
+                    </ul>
+                        <div>
+                            <form asp-action="Index" asp-controller="Home">
+                                <input name="searchString" class="from-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                                <button class="btn btn-dark" type="submit">Search</button>
+                            </form>
+                        </div>
+                    <ul class="navbar-nav">
+                        <li>
+                            <a class="nav-link text-dark" asp-controller="Accounts" asp-action="SignIn">Sign in</a>
+                        </li>
                     </ul>
                 </div>
             </div>

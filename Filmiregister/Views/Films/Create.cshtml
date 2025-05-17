@@ -1,0 +1,85 @@
+﻿@model Filmiregister.Models.Films.FilmCreateViewModel
+
+<div>
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+
+        <div class="form-group-row">
+            <label asp-for="FilmTitle" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="FilmTitle" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label asp-for="FilmDescription" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="FilmDescription" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label asp-for="PublicationDate" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="PublicationDate" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label asp-for="FilmDuration" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="FilmDuration" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label asp-for="FilmCategory" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="FilmCategory" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label asp-for="FilmRating" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="FilmRating" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="Files" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-5">
+                <div class="custom-file">
+                    <input class="form-control custom-file-input"
+                           asp-for="Files"
+                           multiple type="file" />
+                    <label class="custom-file-label">Choose Images from device -></label>
+                </div>
+            </div>
+
+        </div>
+        @{
+            var breakpoint = "";
+        }
+
+        <input asp-action="Create" asp-controller="Films" type="submit"
+               class="btn btn-primary" value="Add this Movie" />
+        <a asp-action="index" class="btn btn-primary">Cancel</a>
+
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileLabel = $(this).next('.custom-file-input');
+                var files = $(this)[0].files;
+                if (files.length > 1) {
+                    fileLabel.html(files.length + ' files selected');
+                }
+                else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+            });
+        });
+    </script>
+}

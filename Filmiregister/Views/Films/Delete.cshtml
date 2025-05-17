@@ -1,0 +1,15 @@
+﻿﻿
+@model Filmiregister.Models.Films.FilmDeleteViewModel
+
+<h1> @Html.DisplayFor(model => model.FilmTitle) </h1>
+
+<div>
+    <h4>Delete</h4>
+    <hr />
+
+    <form asp-action="DeleteConfirmation">
+        <input type="hidden" asp-for="FilmID" name="id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" asp-controller="films" class="btn btn-secondary">Back</a>
+    </form>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Filmiregister.Models.Films.FilmIndexViewModel>
+
+
+@{
+    int rowNumber = 1;
+    int currentRow = 1;
+    int currentTile = 1;
+    int tilesInRow = 6;
+}
+<div>
+    <a asp-action="Create" asp-controller="Films" class="btn btn-primary">Add new Movie</a>
+</div>
+<div class="h1">Movies:</div>
+<form method="post">
+    <table class="table table-hover" id="tableWH">
+        <tbody>
+                @foreach (var movie in Model)
+                {                     
+                <td>
+                    <table class="HIT">
+                        <div>Movie</div>
+                        <tr class="TColor"><td colspan="2">@movie.FilmTitle</td></tr>
+                        <tr class="TColor">
+                            <td colspan="2">
+                                    @if (movie.FilmImage == null || !movie.FilmImage.Any())
+                                {
+                                    <img src="~/lib/appset/image/Q.jpg" alt="Default Image" class="card-img-top" />
+                                }
+                                else
+                                {
+                                        @foreach (var Image in movie.FilmImage)
+                                    {
+                                        <partial name="_ImageIndex" model="Image" />
+                                    }
+                                }
+                            </td>
+                        </tr>
+                        <tr class="TColor"><td>@movie.PublicationDate</td></tr>
+                        <tr class="TColor"><td colspan="2">@movie.FilmDuration</td></tr>
+                    </table>
+                    <div class="Action-btn">
+                        Admin Actions
+                        <br />
+                        <a asp-action="delete" asp-controller="Films" asp-route-id="@movie.FilmID" class="btn btn-info">Delete</a><br />
+                        <a asp-action="details" asp-controller="Films" asp-route-id="@movie.FilmID" class="btn btn-info">Details</a>
+
+                    </div>
+                </td>
+                    rowNumber++;
+                }
+        </tbody>
+    </table>
+</form>

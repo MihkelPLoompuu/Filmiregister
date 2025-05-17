@@ -1,4 +1,6 @@
 using Filmiregister.Data;
+using Filmiregister.ServiceInterface;
+using Filmiregister.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
@@ -12,8 +14,10 @@ namespace Filmiregister
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IFilmsServices, FilmsServices>();
+            builder.Services.AddScoped<IFileServices, FileServices>();
             builder.Services.AddDbContext<FilmContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("Filmiregister_DB")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
             CreatDbIfNotExists(app);

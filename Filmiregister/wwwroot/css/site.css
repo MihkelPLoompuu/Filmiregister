@@ -13,10 +13,16 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
   margin-bottom: 60px;
+  background-color:blanchedalmond;
+}
+.HIT {
+    border: 3px solid;
+    border-color: dimgray;
+    text-align: center;
 }
