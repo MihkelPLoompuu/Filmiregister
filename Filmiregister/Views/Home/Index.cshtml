@@ -8,33 +8,35 @@
     int currentTile = 1;
     int tilesInRow = 6;
 }
-<div class="h1, align-text-top">Movies:</div>
+<div class="h1, align-text-top">Movies</div>
 <form method="post">
     <table class="table table-hover" id="tableWH">
         <tbody>
             @foreach (var movie in Model)
             {
             <td>
-                <table class="HIT">
-                    <tr><td colspan="2">@movie.FilmTitle</td></tr>
-                    <tr>
-                        <td colspan="2">
-                                @if (movie.FilmImage == null || !movie.FilmImage.Any())
-                                {
-                                <img src="~/lib/appset/image/Q.jpg" alt="Default Image" class="card-img-top" />
-                                }
-                                else
-                                {
-                                    @foreach (var Image in movie.FilmImage)
+                <a asp-action="details" asp-controller="Films" asp-route-id="@movie.FilmID" class="btn btn-info">
+                    <table class="HIT">
+                        <tr><td colspan="2">@movie.FilmTitle</td></tr>
+                        <tr>
+                            <td colspan="2">
+                                    @if (movie.FilmImage == null || !movie.FilmImage.Any())
                                     {
-                                    <partial name="_ImageIndex" model="Image" />
+                                    <img src="~/lib/appset/image/Q.jpg" alt="Default Image" class="card-img-top" />
                                     }
-                                }
-                        </td>
-                    </tr>
-                    <tr><td>@movie.PublicationDate</td></tr>
-                    <tr><td colspan="2">@movie.FilmDuration</td></tr>
-                </table>
+                                    else
+                                    {
+                                        @foreach (var Image in movie.FilmImage)
+                                        {
+                                        <partial name="_ImageIndex" model="Image" />
+                                        }
+                                    }
+                            </td>
+                        </tr>
+                        <tr><td>@movie.PublicationDate</td></tr>
+                        <tr><td colspan="2">@movie.FilmDuration</td></tr>
+                    </table>
+                </a>
             </td>
                 rowNumber++;
             }
