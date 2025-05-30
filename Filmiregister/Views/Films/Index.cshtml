@@ -18,7 +18,6 @@
                 {                     
                 <td>
                     <table class="HIT">
-                        <div>Movie</div>
                         <tr class="TColor"><td colspan="2">@movie.FilmTitle</td></tr>
                         <tr class="TColor">
                             <td colspan="2">
@@ -41,12 +40,16 @@
                     <div class="Action-btn">
                         Admin Actions
                         <br />
-                        <a asp-action="delete" asp-controller="Films" asp-route-id="@movie.FilmID" class="btn btn-info">Delete</a><br />
+                        <a asp-action="delete" asp-controller="Films" asp-route-id="@movie.FilmID" class="btn btn-info">Delete</a>
                         <a asp-action="details" asp-controller="Films" asp-route-id="@movie.FilmID" class="btn btn-info">Details</a>
 
                     </div>
                 </td>
                     rowNumber++;
+                if (rowNumber % 4 == 0)
+                {
+                <tr></tr>
+                }
                 }
         </tbody>
     </table>
