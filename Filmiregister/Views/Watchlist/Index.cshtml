@@ -1,0 +1,22 @@
+﻿@using Filmiregister.Domain
+@model List<Film>
+
+<h2>Watchlist</h2>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var movie in Model)
+        {
+            <li>@movie.FilmTitle</li>
+            <form asp-action="Remove" method="post" class="mb-0">
+                <input type="hidden" name="id" value="@movie.FilmID" />
+                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+            </form>
+        }
+    </ul>
+}
+else
+{
+    <p>Your watchlist is empty.</p>
+}

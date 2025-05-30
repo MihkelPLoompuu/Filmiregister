@@ -37,6 +37,12 @@
                         <tr><td colspan="2">@movie.FilmDuration</td></tr>
                     </table>
                 </a>
+                    <div>
+                        <p>@movie.FilmTitle</p>
+                        <a asp-action="Add" asp-controller="Watchlist" asp-route-id="@movie.FilmID" asp-route-title="@movie.FilmTitle" class="btn btn-primary">
+                            Add movie to watchlist
+                        </a>
+                    </div>
             </td>
                 rowNumber++;
                 if(rowNumber % 4 == 0){
